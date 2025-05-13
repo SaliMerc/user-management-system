@@ -47,9 +47,8 @@ class ChangePasswordSerializer(serializers.Serializer):
         if data['new_password'] == data['old_password']:
             raise serializers.ValidationError({"Password-repeat":"New password cannot be the same as the old password"})
 
-        # if the new passwords match and not the same as the old password, its validated and saves
+        # if the new passwords match and not the same as the old password, its validated and saved
         password_validation.validate_password(data['new_password'], user)
-
         return data
 
 class UpdateUserDetails(serializers.ModelSerializer):

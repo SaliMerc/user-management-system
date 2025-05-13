@@ -23,7 +23,7 @@ def create_user(request):
     return Response(serializer.errors, status=400)
 
 """
-This can be used if only the admins can perform the actions on user accounts: Permission class decorator(IsAuthenticated) will be added to the respective functions
+This can be used if the actions need to be performed by a logged in user: Permission class decorator(IsAuthenticated) will be added to the respective functions and the credentials from the logged in user will then be used to perform the actions
 @api_view(['POST'])
 def user_login(request):
     username = request.data.get('username')
@@ -41,14 +41,13 @@ def change_password(request,id):
     try:
         user=MyUser.objects.get(id=id)
     except MyUser.DoesNotExist:
-        return Response({"error":"user not found"},status=404)
+        return Response({"Error":"User not found"},status=404)
 
-    serializer=ChangePasswordSerializer(data=request.data, context={'user':user})
+    #context is used in this instance because i am injecting the user data into a validate logic (can also be used whe you want to inject into a create logic)
+    serializer=ChangePasswordSerializer(data=request.data, context={"user":user})
     if serializer.is_valid():
         user.set_password(serializer.validated_data['new_password'])
-
         user.save()
-
         return Response({"Success":"Password updated successfully"}, status=200)
 
     return Response(serializer.errors, status=400)
