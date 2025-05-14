@@ -2,16 +2,16 @@ User Management System - Django REST Framework
 
 Project Purpose
 
-This project is a robust user management system built with Django and Django REST Framework. It provides a secure API backend for handling user accounts with full CRUD functionality, including user creation, deletion, password changes, and profile updates. The system is designed to be integrated with frontend applications or used as a microservice in larger architectures.
+This project is a robust user management system built with Django and Django REST Framework. It provides a secure API backend for handling user accounts with full CRUD functionality, including user creation, deletion, password changes, and profile updates.
 
 Tech Stack
 
 - Backend Framework: Django 4.x
 - API Framework: Django REST Framework (DRF)
-- Database: SQLite (default for development, easily configurable for PostgreSQL/MySQL)
+- Database: SQLite
 - Authentication: Token Authentication (DRF's built-in)
 - Validation: Django model validators + DRF serializers
-- Testing: Postman collection included
+- Testing: Postman collection
 
 Features Implemented
 
@@ -20,9 +20,8 @@ Features Implemented
 3. Password Management: Secure password change endpoint
 4. Profile Updates: Modify user details
 5. Data Validation: Comprehensive input validation
-6. API Documentation: Self-documenting through DRF's browsable API
 
- Setup Instructions
+Setup Instructions
 
 Prerequisites
 
@@ -41,7 +40,8 @@ Installation
 2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   Linux: source venv/bin/activate
+   On Windows: venv\Scripts\activate
    ```
 
 3. Install dependencies:
@@ -51,6 +51,7 @@ Installation
 
 4. Apply migrations:
    ```bash
+   python manage.py makemigrations
    python manage.py migrate
    ```
 
@@ -59,45 +60,17 @@ Installation
    python manage.py createsuperuser
    ```
 
-### Running the Development Server
-
+Running the Development Server
 ```bash
 python manage.py runserver
 ```
-
 The API will be available at `http://localhost:8000/api/`
 
-## API Endpoints
+Postman Collection
 
-| Endpoint | Method | Description | Authentication Required |
-|----------|--------|-------------|--------------------------|
-| `/api/users/` | POST | Create new user | No |
-| `/api/users/{id}/` | GET | Get user details | Yes |
-| `/api/users/{id}/` | PUT/PATCH | Update user details | Yes |
-| `/api/users/{id}/` | DELETE | Delete user | Yes |
-| `/api/change-password/` | POST | Change password | Yes |
-| `/api/token/` | POST | Obtain authentication token | No |
+The repository includes a Postman collection (`(https://salinemercy.postman.co/workspace/Saline-Mercy's-Workspace~7d90ad68-1f65-4df4-8a66-051acda73610/collection/44878844-360eed90-9448-43d6-927c-6652947211ca?action=share&creator=44878844&active-environment=44878844-53432727-a9e3-49c3-83d5-22bf63b190a0)`) with pre-configured requests for all API endpoints. 
 
-## Postman Collection
-
-The repository includes a Postman collection (`UserManagement.postman_collection.json`) with pre-configured requests for all API endpoints. Import this into Postman to quickly test all available operations.
-
-Testing
-
-To run the test suite:
-```bash
-python manage.py test
-```
-
-## Configuration
-
-Environment variables can be configured in `settings.py` or through a `.env` file:
-
-- `SECRET_KEY`: Django secret key
-- `DEBUG`: Set to `False` in production
-- `DATABASE_URL`: For production database configuration
-
-## Deployment Notes
+Deployment Notes
 
 For production deployment:
 1. Set `DEBUG = False`
