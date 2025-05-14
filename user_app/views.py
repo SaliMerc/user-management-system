@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from user_app.models import *
 from .serializers import *
 
+"""Only the admins can perform actions in the system (defined in the default permission classes in settings)"""
 
-# Create your views here.
 @api_view(['GET'])
 def get_users(request):
     users = MyUser.objects.all()
@@ -43,7 +43,6 @@ def change_password(request,id):
     except MyUser.DoesNotExist:
         return Response({"Error":"User not found"},status=404)
 
-    #context is used in this instance because i am injecting the user data into a validate logic (can also be used whe you want to inject into a create logic)
     serializer=ChangePasswordSerializer(data=request.data, context={"user":user})
     if serializer.is_valid():
         user.set_password(serializer.validated_data['new_password'])

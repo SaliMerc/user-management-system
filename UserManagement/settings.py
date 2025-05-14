@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'user_app.MyUser'
 
+SILK_PYTHON_PROFILER = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'user_app',
     'rest_framework',
     'rest_framework.authtoken',
+    'silk',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'UserManagement.urls'
