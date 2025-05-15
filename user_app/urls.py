@@ -3,8 +3,7 @@ from rest_framework import routers
 from .import views
 
 urlpatterns = [
-    # path('login/', views.user_login, name='login'),
-    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path('login/', views.user_login, name='login'),
 
     path('get-users/', views.get_users, name='get-users'),
 

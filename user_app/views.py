@@ -1,6 +1,8 @@
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes, parser_classes
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.response import Response
 from user_app.models import *
@@ -9,12 +11,15 @@ from .serializers import *
 """Only the admins can perform actions in the system (defined in the default permission classes in settings)"""
 
 @api_view(['GET'])
+@permission_classes([IsAdminUser])
 def get_users(request):
     users = MyUser.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
+@parser_classes([MultiPartParser, FormParser])
 def create_user(request):
     serializer = CreateUserSerializer(data=request.data)
     if serializer.is_valid():
@@ -22,9 +27,8 @@ def create_user(request):
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
-"""
-This can be used if the actions need to be performed by a logged in user: Permission class decorator(IsAuthenticated) will be added to the respective functions and the credentials from the logged in user will then be used to perform the actions
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def user_login(request):
     username = request.data.get('username')
     password = request.data.get('password')
@@ -32,11 +36,20 @@ def user_login(request):
     user=authenticate(username=username, password=password, is_staff=True, is_superuser=True)
 
     if user:
-        return Response({"Logged-in":"You have logged in successfully"})
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        refresh_token = str(refresh)
+
+        return Response({
+            "message": "Logged in successfully",
+            "access": access_token,
+            "refresh": refresh_token,
+        })
     return Response({"error":"wrong credentials"},status=401)
-"""
+
 
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
 def change_password(request,id):
     try:
         user=MyUser.objects.get(id=id)
@@ -52,13 +65,14 @@ def change_password(request,id):
     return Response(serializer.errors, status=400)
 
 @api_view(['PATCH'])
+@permission_classes([IsAdminUser])
 def update_user_details(request,id):
     try:
         user=MyUser.objects.get(id=id)
     except MyUser.DoesNotExist:
         return Response({"User":"User does not exist"},status=404)
 
-    serializer=UpdateUserDetails(user, data=request.data, partial=True)
+    serializer=UserSerializer(user, data=request.data, partial=True)
 
     if serializer.is_valid():
         serializer.save()
@@ -66,10 +80,11 @@ def update_user_details(request,id):
     return Response(serializer.errors, status=400)
 
 @api_view(['DELETE'])
+@permission_classes([IsAdminUser])
 def delete_user(request,id):
     try:
-        user=MyUser.objects.get(id=id)
-        user.delete()
-        return Response({"Deletion": "User deleted successfully"}, status=204)
+        user = MyUser.objects.get(id=id)
     except MyUser.DoesNotExist:
-        return Response({"User":"User does not exist"},status=404)
+        return Response({"User": "User does not exist"}, status=404)
+    user.delete()
+    return Response({"Deletion": "User deleted successfully"}, status=204)
