@@ -9,7 +9,7 @@ Tech Stack
 - Backend Framework: Django 4.x
 - API Framework: Django REST Framework (DRF)
 - Database: SQLite
-- Authentication: Token Authentication (DRF's built-in)
+- Authentication: Token Authentication (JWT)
 - Validation: Django model validators + DRF serializers
 - Testing: Postman collection
 
@@ -113,7 +113,7 @@ API ENDPOINTS
            "phone_number": "integer",
            "city": "string",
            "country": "string",
-           "profile_picture": ""image/...."/..."
+           "profile_picture": ""image/...."
        }
       ]
       ```
