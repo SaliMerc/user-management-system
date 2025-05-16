@@ -70,6 +70,105 @@ Postman Collection
 
 The repository includes a Postman collection (`https://salinemercy.postman.co/workspace/Saline-Mercy' 's-Workspace~7d90ad68-1f65-4df4-8a66-051acda73610/collection/44878844-360eed90-9448-43d6-927c-6652947211ca?action=share&creator=44878844&active-environment=44878844-53432727-a9e3-49c3-83d5-22bf63b190a0`) with pre-configured requests for all API endpoints. 
 
+
+API ENDPOINTS   
+
+1. POST /api/login/:
+   ```json
+   {
+    "username": string,
+    "password": string
+   }
+   ```
+3. GET /api/get-users/:
+   ```json
+   [
+    {
+        "id": integer,
+        "username": string,
+        "password": string,
+        "email": string,
+        "first_name": string,
+        "last_name": string,
+        "display_name": string,
+        "phone_number": integer,
+        "city": string,
+        "country": string,
+        "profile_picture": image
+    },
+    {
+        "id": integer,
+        "username": string,
+        "password": string,
+        "email": string,
+        "first_name": string,
+        "last_name": string,
+        "display_name": string,
+        "phone_number": integer,
+        "city": string,
+        "country": string,
+        "profile_picture": image
+    }
+   ]
+   ```
+4. POST  /api/create-user/:
+   ```json
+    {
+        "username": string,
+        "password": string,
+        "email": string,
+        "first_name": string,
+        "last_name": string,
+        "display_name": string,
+        "phone_number": integer,
+        "city": string,
+        "country": string,
+        "profile_picture": image
+    }
+   ```
+
+4. POST  /api/update-user-details/<int:id>/:
+   ```json
+    {
+        "username": string,
+        "password": string,
+        "email": string,
+        "first_name": string,
+        "last_name": string,
+        "display_name": string,
+        "phone_number": integer,
+        "city": string,
+        "country": string,
+        "profile_picture": image
+    }
+   ```
+5. POST  /api/change-password/<int: id>/:
+   ```json
+    {
+        "old_password": string,
+        "new_password": string,
+        "confirm_password": string,
+    }
+   ```
+6. DELETE  /api/user/delete/<int: id>/:
+   ```json
+    {
+        "old_password": string,
+        "new_password": string,
+        "confirm_password": string,
+    }
+   ```
+4. Apply migrations:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+5. Create a superuser (admin account):
+   ```bash
+   python manage.py createsuperuser
+   ```
+
 Deployment Notes
 
 For production deployment:
