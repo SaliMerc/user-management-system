@@ -72,15 +72,34 @@ The repository includes a Postman collection (`https://salinemercy.postman.co/wo
 
 
 API ENDPOINTS   
+1. Admin Login
 
-1. POST /api/login/:
+Endpoint: /api/login/
+Method: POST
+Request Body:
    ```json
    {
     "username": string,
     "password": string
    }
+```
+Response:
+   ```json
+   {
+    "message": string,
+    "access": string,
+    "refresh": string
+   }
    ```
-3. GET /api/get-users/:
+
+2. Getting a list of all users in the system
+
+Endpoint: /api/get-users/
+Method: GET
+Headers:
+Authorization: Bearer <access_token>
+Content-Type: application/json
+Response:
    ```json
    [
     {
@@ -111,7 +130,68 @@ API ENDPOINTS
     }
    ]
    ```
-4. POST  /api/create-user/:
+3. Creating a new user
+
+Endpoint: /api/create-user/
+Method: POST
+Headers:
+Authorization: Bearer <access_token>
+Content-Type: form-data
+
+Request Body:
+   ```json
+   {
+     "id": integer,
+     "password": string,
+     "username": string,
+     "password": string,
+     "email": string,
+     "first_name": string,
+     "last_name": string,
+     "display_name": string,
+     "phone_number": integer,
+     "city": string,
+     "country": string,
+     "profile_picture": image
+   }
+   ```
+Response:
+   ```json
+    {
+        "username": string,
+        "email": string,
+        "first_name": string,
+        "last_name": string,
+        "display_name": string,
+        "phone_number": integer,
+        "city": string,
+        "country": string
+    }
+   ```
+
+4. Updating User Details
+
+Endpoint: /api/update-user-details/<int:id>/
+Method: PATCH
+Headers:
+Authorization: Bearer <access_token>
+Content-Type: application/json
+   Request Body:
+   ```json
+   {
+     "password": string,
+     "username": string,
+     "password": string,
+     "email": string,
+     "first_name": string,
+     "last_name": string,
+     "display_name": string,
+     "phone_number": integer,
+     "city": string,
+     "country": string
+   }
+   ```
+   Response:
    ```json
     {
         "username": string,
@@ -122,27 +202,17 @@ API ENDPOINTS
         "display_name": string,
         "phone_number": integer,
         "city": string,
-        "country": string,
-        "profile_picture": image
+        "country": string
     }
    ```
+6. Changing User Passwords
 
-4. POST  /api/update-user-details/<int:id>/:
-   ```json
-    {
-        "username": string,
-        "password": string,
-        "email": string,
-        "first_name": string,
-        "last_name": string,
-        "display_name": string,
-        "phone_number": integer,
-        "city": string,
-        "country": string,
-        "profile_picture": image
-    }
-   ```
-5. POST  /api/change-password/<int: id>/:
+Endpoint: /api/change-password/<int: id>/
+Method: POST
+Headers:
+Authorization: Bearer <access_token>
+Content-Type: application/json
+   Request body:
    ```json
     {
         "old_password": string,
@@ -150,32 +220,24 @@ API ENDPOINTS
         "confirm_password": string,
     }
    ```
-6. DELETE  /api/user/delete/<int: id>/:
+   Response:
    ```json
     {
-        "old_password": string,
-        "new_password": string,
-        "confirm_password": string,
+        "Success": [
+        "Password changed successfully."
+    ]
     }
    ```
-4. Apply migrations:
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
+7. Deleting users from the system
+
+Endpoint: /api/user/delete/<int: id>/
+Method: DELETE
+Headers:
+Authorization: Bearer <access_token>
+Content-Type: application/json
+   Response:
+   ```json
+    {
+    "Deletion": "User deleted successfully"
+   }
    ```
-
-5. Create a superuser (admin account):
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-Deployment Notes
-
-For production deployment:
-1. Set `DEBUG = False`
-2. Configure a production database (PostgreSQL recommended)
-3. Set up proper HTTPS configuration
-4. Consider using:
-   - Gunicorn or uWSGI as application server
-   - Nginx as reverse proxy
-   - WhiteNoise for static files
