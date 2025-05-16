@@ -74,16 +74,16 @@ The repository includes a Postman collection (`https://salinemercy.postman.co/wo
 API ENDPOINTS   
 1. Admin Login
 
-Endpoint: /api/login/
-Method: POST
-Request Body:
+Endpoint: /api/login/  
+Method: POST  
+Request Body:    
    ```json
    {
     "username": string,
     "password": string
    }
 ```
-Response:
+Response:  
    ```json
    {
     "message": string,
@@ -92,14 +92,14 @@ Response:
    }
    ```
 
-2. Getting a list of all users in the system
+2. Getting a list of all users in the system  
 
-Endpoint: /api/get-users/
-Method: GET
-Headers:
-Authorization: Bearer <access_token>
-Content-Type: application/json
-Response:
+Endpoint: /api/get-users/  
+Method: GET  
+Headers:  
+Authorization: Bearer <access_token>  
+Content-Type: application/json  
+Response:  
    ```json
    [
     {
@@ -132,13 +132,13 @@ Response:
    ```
 3. Creating a new user
 
-Endpoint: /api/create-user/
-Method: POST
-Headers:
-Authorization: Bearer <access_token>
-Content-Type: form-data
+Endpoint: /api/create-user/  
+Method: POST  
+Headers:  
+Authorization: Bearer <access_token>  
+Content-Type: form-data  
 
-Request Body:
+Request Body:  
    ```json
    {
      "id": integer,
@@ -155,7 +155,7 @@ Request Body:
      "profile_picture": image
    }
    ```
-Response:
+Response:  
    ```json
     {
         "username": string,
@@ -169,14 +169,14 @@ Response:
     }
    ```
 
-4. Updating User Details
+4. Updating User Details  
 
-Endpoint: /api/update-user-details/<int:id>/
-Method: PATCH
-Headers:
-Authorization: Bearer <access_token>
-Content-Type: application/json
-   Request Body:
+Endpoint: /api/update-user-details/<int:id>/  
+Method: PATCH  
+Headers:  
+Authorization: Bearer <access_token>  
+Content-Type: application/json  
+   Request Body:  
    ```json
    {
      "password": string,
@@ -191,7 +191,7 @@ Content-Type: application/json
      "country": string
    }
    ```
-   Response:
+   Response:  
    ```json
     {
         "username": string,
@@ -205,14 +205,14 @@ Content-Type: application/json
         "country": string
     }
    ```
-6. Changing User Passwords
+6. Changing User Passwords  
 
-Endpoint: /api/change-password/<int: id>/
-Method: POST
-Headers:
-Authorization: Bearer <access_token>
-Content-Type: application/json
-   Request body:
+Endpoint: /api/change-password/<int: id>/  
+Method: POST  
+Headers:  
+Authorization: Bearer <access_token>  
+Content-Type: application/json  
+   Request body:  
    ```json
     {
         "old_password": string,
@@ -220,7 +220,7 @@ Content-Type: application/json
         "confirm_password": string,
     }
    ```
-   Response:
+   Response:  
    ```json
     {
         "Success": [
@@ -228,14 +228,14 @@ Content-Type: application/json
     ]
     }
    ```
-7. Deleting users from the system
+7. Deleting users from the system  
 
-Endpoint: /api/user/delete/<int: id>/
-Method: DELETE
-Headers:
-Authorization: Bearer <access_token>
-Content-Type: application/json
-   Response:
+Endpoint: /api/user/delete/<int: id>/  
+Method: DELETE  
+Headers:  
+Authorization: Bearer <access_token>  
+Content-Type: application/json  
+   Response:  
    ```json
     {
     "Deletion": "User deleted successfully"
