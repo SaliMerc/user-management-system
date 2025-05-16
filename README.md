@@ -158,29 +158,15 @@ API ENDPOINTS
 
 4. Updating User Details  
 
-Endpoint: /api/update-user-details/<int:id>/  
-Method: PATCH  
-Headers:  
-Authorization: Bearer <access_token>  
-Content-Type: application/json  
-   Request Body:  
-   ```json
-   {
-     "password": "string",
-     "username": "string",
-     "password": "string",
-     "email": "string",
-     "first_name": "string",
-     "last_name": "string",
-     "display_name": "string",
-     "phone_number": "integer",
-     "city": "string",
-     "country": "string"
-   }
-   ```
-   Response:  
-   ```json
-    {
+   Endpoint: /api/update-user-details/<int:id>/  
+   Method: PATCH  
+   Headers:  
+   Authorization: Bearer <access_token>  
+   Content-Type: application/json  
+      Request Body:  
+      ```json
+      {
+        "password": "string",
         "username": "string",
         "password": "string",
         "email": "string",
@@ -190,41 +176,55 @@ Content-Type: application/json
         "phone_number": "integer",
         "city": "string",
         "country": "string"
-    }
-   ```
+      }
+      ```
+      Response:  
+      ```json
+       {
+           "username": "string",
+           "password": "string",
+           "email": "string",
+           "first_name": "string",
+           "last_name": "string",
+           "display_name": "string",
+           "phone_number": "integer",
+           "city": "string",
+           "country": "string"
+       }
+      ```
 6. Changing User Passwords  
 
-Endpoint: /api/change-password/<int: id>/  
-Method: POST  
-Headers:  
-Authorization: Bearer <access_token>  
-Content-Type: application/json  
-   Request body:  
-   ```json
-    {
-        "old_password": "string",
-        "new_password": "string",
-        "confirm_password": "string",
-    }
-   ```
-   Response:  
-   ```json
-    {
-        "Success": [
-        "Password changed successfully."
-    ]
-    }
-   ```
+   Endpoint: /api/change-password/<int: id>/  
+   Method: POST  
+   Headers:  
+   Authorization: Bearer <access_token>  
+   Content-Type: application/json  
+      Request body:  
+      ```json
+       {
+           "old_password": "string",
+           "new_password": "string",
+           "confirm_password": "string",
+       }
+      ```
+      Response:  
+      ```json
+       {
+           "Success": [
+           "Password changed successfully."
+       ]
+       }
+      ```
 7. Deleting users from the system  
 
-Endpoint: /api/user/delete/<int: id>/  
-Method: DELETE  
-Headers:  
-Authorization: Bearer <access_token>  
-Content-Type: application/json  
-   Response:  
-   ```json
-    {
-    "Deletion": "User deleted successfully"
-   }
-   ```
+   Endpoint: /api/user/delete/<int: id>/  
+   Method: DELETE  
+   Headers:  
+   Authorization: Bearer <access_token>  
+   Content-Type: application/json  
+      Response:  
+      ```json
+       {
+       "Deletion": "User deleted successfully"
+      }
+      ```
