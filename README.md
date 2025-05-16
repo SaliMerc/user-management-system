@@ -103,14 +103,14 @@ API ENDPOINTS
       ```json
       [
        {
-           "id": integer,
+           "id": "integer",
            "username": "string",
            "password": "string",
            "email": "string",
            "first_name": "string",
            "last_name": "string",
            "display_name": "string",
-           "phone_number": integer,
+           "phone_number": "integer",
            "city": "string",
            "country": "string",
            "profile_picture": ""image/...."/..."
@@ -128,7 +128,7 @@ API ENDPOINTS
    Request Body:  
       ```json
       {
-        "id": integer,
+        "id": "integer",
         "password": "string",
         "username": "string",
         "password": "string",
@@ -136,7 +136,7 @@ API ENDPOINTS
         "first_name": "string",
         "last_name": "string",
         "display_name": "string",
-        "phone_number": integer,
+        "phone_number": "integer",
         "city": "string",
         "country": "string",
         "profile_picture": "image/...."
@@ -150,7 +150,7 @@ API ENDPOINTS
            "first_name": "string",
            "last_name": "string",
            "display_name": "string",
-           "phone_number": integer,
+           "phone_number": "integer",
            "city": "string",
            "country": "string"
        }
@@ -173,7 +173,7 @@ Content-Type: application/json
      "first_name": "string",
      "last_name": "string",
      "display_name": "string",
-     "phone_number": integer,
+     "phone_number": "integer",
      "city": "string",
      "country": "string"
    }
@@ -187,7 +187,7 @@ Content-Type: application/json
         "first_name": "string",
         "last_name": "string",
         "display_name": "string",
-        "phone_number": integer,
+        "phone_number": "integer",
         "city": "string",
         "country": "string"
     }
