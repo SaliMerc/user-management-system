@@ -74,100 +74,87 @@ The repository includes a Postman collection (`https://salinemercy.postman.co/wo
 API ENDPOINTS   
 1. Admin Login
 
-Endpoint: /api/login/  
-Method: POST  
-Request Body:    
-   ```json
-   {
-    "username": string,
-    "password": string
-   }
-```
-Response:  
-   ```json
-   {
-    "message": string,
-    "access": string,
-    "refresh": string
-   }
+   Endpoint: /api/login/  
+   Method: POST  
+   Request Body:    
+      ```json
+      {
+       "username": "string",
+       "password": "string"
+      }
    ```
+   Response:  
+      ```json
+      {
+       "message": "string",
+       "access": "string",
+       "refresh": "string"
+      }
+      ```
 
 2. Getting a list of all users in the system  
 
-Endpoint: /api/get-users/  
-Method: GET  
-Headers:  
-Authorization: Bearer <access_token>  
-Content-Type: application/json  
-Response:  
-   ```json
-   [
-    {
-        "id": integer,
-        "username": string,
-        "password": string,
-        "email": string,
-        "first_name": string,
-        "last_name": string,
-        "display_name": string,
-        "phone_number": integer,
-        "city": string,
-        "country": string,
-        "profile_picture": image
-    },
-    {
-        "id": integer,
-        "username": string,
-        "password": string,
-        "email": string,
-        "first_name": string,
-        "last_name": string,
-        "display_name": string,
-        "phone_number": integer,
-        "city": string,
-        "country": string,
-        "profile_picture": image
-    }
-   ]
-   ```
+   Endpoint: /api/get-users/  
+   Method: GET  
+   Headers:  
+   Authorization: Bearer <access_token>  
+   Content-Type: application/json  
+   Response:  
+      ```json
+      [
+       {
+           "id": integer,
+           "username": "string",
+           "password": "string",
+           "email": "string",
+           "first_name": "string",
+           "last_name": "string",
+           "display_name": "string",
+           "phone_number": integer,
+           "city": "string",
+           "country": "string",
+           "profile_picture": ""image/...."/..."
+       }
+      ]
+      ```
 3. Creating a new user
 
-Endpoint: /api/create-user/  
-Method: POST  
-Headers:  
-Authorization: Bearer <access_token>  
-Content-Type: form-data  
-
-Request Body:  
-   ```json
-   {
-     "id": integer,
-     "password": string,
-     "username": string,
-     "password": string,
-     "email": string,
-     "first_name": string,
-     "last_name": string,
-     "display_name": string,
-     "phone_number": integer,
-     "city": string,
-     "country": string,
-     "profile_picture": image
-   }
-   ```
-Response:  
-   ```json
-    {
-        "username": string,
-        "email": string,
-        "first_name": string,
-        "last_name": string,
-        "display_name": string,
+   Endpoint: /api/create-user/  
+   Method: POST  
+   Headers:  
+   Authorization: Bearer <access_token>  
+   Content-Type: form-data  
+   
+   Request Body:  
+      ```json
+      {
+        "id": integer,
+        "password": "string",
+        "username": "string",
+        "password": "string",
+        "email": "string",
+        "first_name": "string",
+        "last_name": "string",
+        "display_name": "string",
         "phone_number": integer,
-        "city": string,
-        "country": string
-    }
-   ```
+        "city": "string",
+        "country": "string",
+        "profile_picture": "image/...."
+      }
+      ```
+   Response:  
+      ```json
+       {
+           "username": "string",
+           "email": "string",
+           "first_name": "string",
+           "last_name": "string",
+           "display_name": "string",
+           "phone_number": integer,
+           "city": "string",
+           "country": "string"
+       }
+      ```
 
 4. Updating User Details  
 
@@ -179,30 +166,30 @@ Content-Type: application/json
    Request Body:  
    ```json
    {
-     "password": string,
-     "username": string,
-     "password": string,
-     "email": string,
-     "first_name": string,
-     "last_name": string,
-     "display_name": string,
+     "password": "string",
+     "username": "string",
+     "password": "string",
+     "email": "string",
+     "first_name": "string",
+     "last_name": "string",
+     "display_name": "string",
      "phone_number": integer,
-     "city": string,
-     "country": string
+     "city": "string",
+     "country": "string"
    }
    ```
    Response:  
    ```json
     {
-        "username": string,
-        "password": string,
-        "email": string,
-        "first_name": string,
-        "last_name": string,
-        "display_name": string,
+        "username": "string",
+        "password": "string",
+        "email": "string",
+        "first_name": "string",
+        "last_name": "string",
+        "display_name": "string",
         "phone_number": integer,
-        "city": string,
-        "country": string
+        "city": "string",
+        "country": "string"
     }
    ```
 6. Changing User Passwords  
@@ -215,9 +202,9 @@ Content-Type: application/json
    Request body:  
    ```json
     {
-        "old_password": string,
-        "new_password": string,
-        "confirm_password": string,
+        "old_password": "string",
+        "new_password": "string",
+        "confirm_password": "string",
     }
    ```
    Response:  
