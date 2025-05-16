@@ -68,7 +68,7 @@ The API will be available at `http://localhost:8000/api/`
 
 Postman Collection
 
-The repository includes a Postman collection (`https://salinemercy.postman.co/workspace/Saline-Mercy' 's-Workspace~7d90ad68-1f65-4df4-8a66-051acda73610/collection/44878844-360eed90-9448-43d6-927c-6652947211ca?action=share&creator=44878844&active-environment=44878844-53432727-a9e3-49c3-83d5-22bf63b190a0`) with pre-configured requests for all API endpoints. 
+The repository includes a Postman collection (`https://salinemercy.postman.co/workspace/Saline-Mercy's-Workspace~7d90ad68-1f65-4df4-8a66-051acda73610/collection/44878844-360eed90-9448-43d6-927c-6652947211ca?action=share&creator=44878844&active-environment=44878844-53432727-a9e3-49c3-83d5-22bf63b190a0`) with pre-configured requests for all API endpoints. 
 
 
 API ENDPOINTS   
