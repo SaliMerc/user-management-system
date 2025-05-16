@@ -113,7 +113,7 @@ API ENDPOINTS
            "phone_number": "integer",
            "city": "string",
            "country": "string",
-           "profile_picture": ""image/...."
+           "profile_picture": "image/...."
        }
       ]
       ```
